@@ -1,0 +1,9 @@
+[template]
+src = "20-imap.conf.tmpl"
+dest = "/etc/dovecot/conf.d/20-imap.conf"
+keys = [
+    "/imap/values/",
+    "/imap/protocols/",
+]
+check_cmd = "/usr/bin/doveconf -n"
+reload_cmd = "/usr/sbin/service dovecot reload"

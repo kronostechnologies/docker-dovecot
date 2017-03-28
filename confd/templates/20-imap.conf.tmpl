@@ -1,0 +1,9 @@
+{{range gets "/imap/values/*"}}{{base .Key}} = {{.Value}}
+{{end}}
+
+{{range $protocol := lsdir "/imap/protocols"}}
+protocol {{$protocol}} {
+  {{range gets  (printf "/imap/protocols/%s/*" $protocol)}}{{base .Key}} = {{.Value}}
+  {{end}}
+}
+{{end}}

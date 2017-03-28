@@ -1,0 +1,8 @@
+{{range gets "/auth/values/*"}}{{base .Key}} = {{.Value}}
+{{end}}
+
+{{if exists "/auth/includes"}}
+  {{range split (getv "/auth/includes") " "}}
+!include {{.}}
+  {{end}}
+{{end}}

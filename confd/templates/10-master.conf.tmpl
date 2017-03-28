@@ -1,0 +1,22 @@
+{{range gets "/master/values/*"}}{{base .Key}} = {{.Value}}
+{{end}}
+
+{{range $service := lsdir "/master/services/"}}
+service {{$service}} {
+  {{range $inet_listener := lsdir (printf "/master/services/%s/inet_listener/" $service)}}
+  inet_listener {{$inet_listener}} {
+    {{range gets (printf "/master/services/%s/inet_listener/%s/*" $service $inet_listener)}}
+    {{base .Key}} = {{.Value}}
+    {{end}}
+  }
+  {{end}}
+
+  {{range $unix_listener := lsdir (printf "/master/services/%s/unix_listener/" $service)}}
+  unix_listener {{$unix_listener}} {
+    {{range gets (printf "/master/services/%s/unix_listener/%s/*" $service $unix_listener)}}
+    {{base .Key}} = {{.Value}}
+    {{end}}
+  }
+  {{end}}
+}
+{{end}}

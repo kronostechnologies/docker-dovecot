@@ -1,0 +1,9 @@
+[template]
+src = "10-logging.conf.tmpl"
+dest = "/etc/dovecot/conf.d/10-logging.conf"
+keys = [
+    "/logging/values/",
+    "/logging/plugin/",
+]
+check_cmd = "/usr/bin/doveconf -n"
+reload_cmd = "/usr/sbin/service dovecot reload"

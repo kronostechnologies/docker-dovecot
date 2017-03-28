@@ -1,0 +1,8 @@
+[template]
+src = "10-master.conf.tmpl"
+dest = "/etc/dovecot/conf.d/10-master.conf"
+keys = [
+    "/master/service",
+]
+check_cmd = "/usr/bin/doveconf -n"
+reload_cmd = "/usr/sbin/service dovecot reload"

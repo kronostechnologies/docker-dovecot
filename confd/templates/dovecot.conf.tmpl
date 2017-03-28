@@ -1,0 +1,15 @@
+{{range gets "/dovecot/values/*"}}{{base .Key}} = {{.Value}}
+{{end}}
+
+{{if exists "/dovecot/includes"}}
+  {{range split (getv "/dovecot/includes") " "}}
+!include {{.}}
+  {{end}}
+{{end}}
+
+{{if exists "/dovecot/includes_try"}}
+  {{range split (getv "/dovecot/includes_try") " "}}
+!include_try {{.}}
+  {{end}}
+{{end}}
+

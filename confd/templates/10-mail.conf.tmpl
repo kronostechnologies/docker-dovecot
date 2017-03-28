@@ -1,0 +1,13 @@
+{{if exists "/mail/namespace"}}
+  {{range gets "/mail/namespace/*"}}{{base .Key}} = {{.Value}}
+  {{end}}
+{{end}}
+
+{{range $dir := lsdir "/mail/namespaces"}}
+namespace {{$dir}} {
+  {{range gets (printf "/mail/namespaces/%s/*" $dir)}}{{base .Key}} = {{.Value}}
+  {{end}}
+}{{end}}
+
+{{range gets "/mail/values/*"}}{{base .Key}} = {{.Value}}
+{{end}}

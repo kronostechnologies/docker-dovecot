@@ -1,0 +1,26 @@
+{{range $protocol := lsdir "/mailboxes/protocols"}}
+protocol {{$protocol}} {
+  {{range gets  (printf "/mailboxes/protocols/%s/*" $protocol)}}{{base .Key}} = {{.Value}}
+  {{end}}
+}
+{{end}}
+
+{{if exists "/mailboxes/plugin/"}}
+plugin {
+  {{range gets "/mailboxes/plugin/*"}}{{base .Key}} = {{.Value}}
+  {{end}}
+}
+{{end}}
+
+{{range $namespace := lsdir "/mailboxes/namespaces"}}
+namespace {{$namespace}} {
+  {{range gets (printf "/mailboxes/namespaces/%s/values/*" $namespace)}}{{base .Key}} = {{.Value}}
+  {{end}}
+
+  {{range $mailbox := lsdir (printf "/mailboxes/namespaces/%s/mailboxes" $namespace)}}
+  mailbox {{getv (printf "/mailboxes/namespaces/%s/mailboxes/%s/name" $namespace $mailbox)}} {
+    {{range gets (printf "/mailboxes/namespaces/%s/mailboxes/%s/values/*" $namespace $mailbox)}}{{base .Key}} = {{.Value}}
+    {{end}}
+  }
+  {{end}}
+}{{end}}

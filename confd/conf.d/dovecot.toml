@@ -1,0 +1,10 @@
+[template]
+src = "dovecot.conf.tmpl"
+dest = "/etc/dovecot/dovecot.conf"
+keys = [
+    "/dovecot/values/",
+    "/dovecot/include/",
+    "/dovecot/include_try/",
+]
+check_cmd = "/usr/bin/doveconf -n"
+reload_cmd = "/usr/sbin/service dovecot reload"

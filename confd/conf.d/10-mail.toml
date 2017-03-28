@@ -1,0 +1,10 @@
+[template]
+src = "10-mail.conf.tmpl"
+dest = "/etc/dovecot/conf.d/10-mail.conf"
+keys = [
+    "/mail/values/",
+    "/mail/namespaces/",
+    "/mail/namespace/",
+]
+check_cmd = "/usr/bin/doveconf -n"
+reload_cmd = "/usr/sbin/service dovecot reload"
