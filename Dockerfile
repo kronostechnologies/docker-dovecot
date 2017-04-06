@@ -25,10 +25,10 @@ RUN groupmod -g $DOVECOT_USER_GID dovecot && \
     usermod -u $DOVECOT_USER_UID dovecot
 
 # Install start/stop scripts
-COPY ./configuration/k /k
+COPY ./configuration /k
 
 # Install entrypoint
-ADD https://github.com/kronostechnologies/docker-init-entrypoint/releases/download/1.0.0/entrypoint.sh /usr/local/bin/entrypoint.sh
+ADD https://github.com/kronostechnologies/docker-init-entrypoint/releases/download/1.2.0/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 EXPOSE 110
