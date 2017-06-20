@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:stretch-slim
 MAINTAINER sysadmin@kronostechnologies.com
 
 ENV DEBIAN_FRONTEND=noninteractive
