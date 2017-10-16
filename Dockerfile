@@ -8,6 +8,7 @@ dovecot-core \
 dovecot-imapd \
 dovecot-mysql \
 dovecot-pop3d \
+procps \
 && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
 # Install confd
