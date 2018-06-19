@@ -1,7 +1,8 @@
 FROM debian:stretch-slim
 MAINTAINER sysadmin@kronostechnologies.com
 
-ENV DEBIAN_FRONTEND=noninteractive
+ENV DEBIAN_FRONTEND=noninteractive \
+    LOG_OUTPUT_DEV=/proc/1/fd/1
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
 dovecot-core \
